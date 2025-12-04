@@ -85,7 +85,7 @@ const Slide3: React.FC<Slide3Props> = ({ holdings }) => {
         </p>
 
         <p className="summary-text" style={{ marginTop: '3rem' }}>
-          Keep up the great work in 2025! 🚀
+          Keep up the great work in 2026! 🚀
         </p>
       </div>
     </div>

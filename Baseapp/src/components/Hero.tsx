@@ -2,11 +2,15 @@ import React from 'react';
 import './Hero.css';
 import investmentData from '../data/investmentData.json';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onViewWrapped: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onViewWrapped }) => {
   return (
     <div className="hero-container">
       <div className="hero-content">
-        <h1 className="hero-title">Your Investment Wrapped {investmentData.year}</h1>
+        <h1 className="hero-title">Your Investment Wrapped 2025</h1>
         <p className="hero-subtitle">
           A year of smart investing and growing wealth
         </p>
@@ -26,11 +30,6 @@ const Hero: React.FC = () => {
             <div className="stat-value">${investmentData.totalReturns.toLocaleString()}</div>
             <div className="stat-label">Profit Earned</div>
           </div>
-          
-          <div className="stat-card">
-            <div className="stat-value">{investmentData.tradingActivity.totalTrades}</div>
-            <div className="stat-label">Total Trades</div>
-          </div>
         </div>
 
         <div className="hero-highlight">
@@ -39,7 +38,7 @@ const Hero: React.FC = () => {
           <p className="top-return">+{investmentData.topPerformingAsset.return}% Returns</p>
         </div>
 
-        <button className="cta-button">View Full Wrapped</button>
+        <button className="cta-button" onClick={onViewWrapped}>View Full Wrapped</button>
       </div>
     </div>
   );

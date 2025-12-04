@@ -8,7 +8,7 @@ import Slide2 from './Slide2';
 import Slide3 from './Slide3';
 import '../styles/theme.less';
 
-const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme }) => {
+const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const totalSlides = 3;
@@ -48,15 +48,50 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme }) => {
     }
   };
 
+  const resetToStart = () => {
+    setCurrentSlide(0);
+  };
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+      if (e.key === 'Home') resetToStart();
     };
 
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [currentSlide]);
+
+  // Mouse wheel / trackpad scroll navigation
+  useEffect(() => {
+    let isScrolling = false;
+    let scrollTimeout: number;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (isScrolling) return;
+      
+      e.preventDefault();
+      isScrolling = true;
+
+      if (e.deltaY > 0) {
+        nextSlide();
+      } else if (e.deltaY < 0) {
+        prevSlide();
+      }
+
+      clearTimeout(scrollTimeout);
+      scrollTimeout = window.setTimeout(() => {
+        isScrolling = false;
+      }, 800); // Prevent rapid scrolling
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+      clearTimeout(scrollTimeout);
+    };
   }, [currentSlide]);
 
   const slides = [
@@ -92,13 +127,23 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme }) => {
         >
           ← Previous
         </button>
-        <button
-          className="nav-button"
-          onClick={nextSlide}
-          disabled={currentSlide === totalSlides - 1}
-        >
-          Next →
-        </button>
+        
+        {currentSlide === totalSlides - 1 ? (
+          <button
+            className="nav-button nav-button-primary"
+            onClick={onExit}
+          >
+            ← Back to Home
+          </button>
+        ) : (
+          <button
+            className="nav-button"
+            onClick={nextSlide}
+            disabled={currentSlide === totalSlides - 1}
+          >
+            Next →
+          </button>
+        )}
       </div>
     </div>
   );

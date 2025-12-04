@@ -1,14 +1,34 @@
 // Motion/src/styles/theme.less
-// Customizable theme variables for Wrapped Experience
-// Colors are set dynamically via CSS variables
+// SPP-inspired theme for Wrapped Experience
+// Matching spp.se design language
 
+// SPP Color Palette
+@color-primary:       #E43C2F;  // SPP red, main accent
+@color-primary-dark:  #7B1313;  // Dark red for headers / hovers
+@color-bg:            #2B2621;  // Lighter dark beige background
+@color-surface:       #3A3530;  // Warm surface for cards
+@color-text-main:     #F5F5F5;  // Off-white text
+@color-text-muted:    #C4BDB3;  // Lighter muted beige text
+@color-border:        #4D453E;  // Lighter warm borders
+@color-link:          #E43C2F;  // Links and CTAs
+@color-chip-bg:       #433A33;  // Lighter warm pill/tag background
+
+// CSS Variables (dynamically set from props, fallback to SPP)
 :root {
-  --wrapped-primary: #1DB954;
-  --wrapped-secondary: #191414;
-  --wrapped-background: #121212;
-  --wrapped-accent: #FF5F6D;
-  --wrapped-text: #FFFFFF;
-  --wrapped-text-secondary: rgba(255, 255, 255, 0.7);
+  --wrapped-primary: @color-primary;
+  --wrapped-secondary: @color-primary-dark;
+  --wrapped-background: @color-bg;
+  --wrapped-accent: @color-primary;
+  --wrapped-text: @color-text-main;
+  --wrapped-text-secondary: @color-text-muted;
+  --wrapped-surface: @color-surface;
+  --wrapped-border: @color-border;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .wrapped-container {
@@ -23,6 +43,11 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
+}
+
+.slide-wrapper {
+  width: 100%;
+  height: 100%;
 }
 
 .slide {
@@ -40,37 +65,38 @@
   font-size: 3.5rem;
   font-weight: 800;
   margin-bottom: 3rem;
-  background: linear-gradient(135deg, var(--wrapped-primary), var(--wrapped-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--wrapped-secondary);
+  letter-spacing: -0.02em;
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    margin-bottom: 2rem;
   }
 }
 
+// Slide 1: Top Holdings
 .holdings-list {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .holding-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
+  background: var(--wrapped-surface);
+  border-radius: 16px;
   padding: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--wrapped-border);
+  transition: all 0.3s ease;
   
   &:hover {
     border-color: var(--wrapped-primary);
-    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(228, 60, 47, 0.15);
+    transform: translateY(-4px);
   }
 }
 
@@ -85,10 +111,15 @@
   }
   
   .ticker {
-    font-size: 1rem;
-    color: var(--wrapped-text-secondary);
+    display: inline-block;
+    font-size: 0.9rem;
+    color: var(--wrapped-text-muted);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.05em;
+    background: @color-chip-bg;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-weight: 600;
   }
 }
 
@@ -98,6 +129,7 @@
   color: var(--wrapped-primary);
 }
 
+// Slide 2: Portfolio Numbers
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -105,51 +137,69 @@
   width: 100%;
   max-width: 1000px;
   margin-top: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .stat-box {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
+  background: var(--wrapped-surface);
   border-radius: 20px;
   padding: 2.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--wrapped-border);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: var(--wrapped-primary);
+    box-shadow: 0 12px 32px rgba(228, 60, 47, 0.12);
+    transform: translateY(-6px);
+  }
   
   .stat-value {
     font-size: 3.5rem;
     font-weight: 800;
     color: var(--wrapped-primary);
     margin-bottom: 1rem;
+    line-height: 1;
   }
   
   .stat-label {
-    font-size: 1.2rem;
-    color: var(--wrapped-text-secondary);
+    font-size: 1.1rem;
+    color: var(--wrapped-text-muted);
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
   }
 }
 
+// Slide 3: Year Summary
 .summary-content {
   max-width: 800px;
   
   .summary-text {
     font-size: 1.5rem;
-    line-height: 2;
-    color: var(--wrapped-text-secondary);
+    line-height: 1.8;
+    color: var(--wrapped-text);
     margin-bottom: 3rem;
+    font-weight: 400;
+    
+    strong {
+      color: var(--wrapped-primary);
+      font-weight: 700;
+    }
   }
   
   .highlight-stat {
     font-size: 5rem;
     font-weight: 900;
-    background: linear-gradient(135deg, var(--wrapped-primary), var(--wrapped-accent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--wrapped-primary);
     margin: 2rem 0;
   }
 }
 
+// Navigation
 .navigation {
   position: absolute;
   bottom: 2rem;
@@ -161,33 +211,49 @@
 }
 
 .nav-button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--wrapped-text);
+  background: @color-surface;
+  border: 2px solid var(--wrapped-primary);
+  color: var(--wrapped-primary);
   padding: 1rem 2rem;
   border-radius: 50px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
+  letter-spacing: 0.02em;
   
-  &:hover {
+  &:hover:not(:disabled) {
     background: var(--wrapped-primary);
-    border-color: var(--wrapped-primary);
+    color: white;
     transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(228, 60, 47, 0.3);
   }
   
   &:disabled {
-    opacity: 0.3;
+    opacity: 0.4;
     cursor: not-allowed;
+    border-color: var(--wrapped-border);
+    color: var(--wrapped-text-muted);
     
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: @color-surface;
       transform: scale(1);
+      box-shadow: none;
     }
   }
 }
 
+.nav-button-primary {
+  background: var(--wrapped-primary);
+  color: white;
+  
+  &:hover {
+    background: var(--wrapped-secondary);
+    transform: scale(1.08);
+  }
+}
+
+// Slide Indicators
 .slide-indicators {
   position: absolute;
   top: 2rem;
@@ -201,9 +267,14 @@
 .indicator {
   width: 40px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--wrapped-border);
   border-radius: 2px;
   transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    background: @color-text-muted;
+  }
   
   &.active {
     background: var(--wrapped-primary);

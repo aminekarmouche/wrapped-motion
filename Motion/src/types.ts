@@ -18,4 +18,5 @@ export interface WrappedTheme {
 export interface WrappedProps {
   holdings: Holding[];
   theme: WrappedTheme;
+  onExit?: () => void;
 }

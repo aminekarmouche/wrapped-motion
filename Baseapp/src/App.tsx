@@ -17,10 +17,10 @@ function App() {
 
   // Define Spotify-like theme - CUSTOMIZE THESE COLORS AS NEEDED
   const spotifyTheme: WrappedTheme = {
-    primary: '#1DB954',      // Spotify green
-    secondary: '#191414',    // Dark gray
-    background: '#121212',   // Nearly black
-    accent: '#FF5F6D',       // Coral/pink accent
+    primary: '#E43C2F',      // SPP red
+    secondary: '#7B1313',    // Dark red
+    background: '#2B2621',   // Lighter dark beige background
+    accent: '#E43C2F',       // SPP red accent
   };
 
   // Alternative theme options (uncomment to use):
@@ -45,42 +45,18 @@ function App() {
   const holdings = portfolioData as Holding[];
 
   if (showWrapped) {
-    return <WrappedExperience holdings={holdings} theme={spotifyTheme} />;
+    return (
+      <WrappedExperience 
+        holdings={holdings} 
+        theme={spotifyTheme}
+        onExit={() => setShowWrapped(false)}
+      />
+    );
   }
 
   return (
     <div className="App">
-      <Hero />
-      {/* Button to show Wrapped Experience - you can customize or remove this */}
-      <button
-        onClick={() => setShowWrapped(true)}
-        style={{
-          position: 'fixed',
-          bottom: '2rem',
-          right: '2rem',
-          padding: '1rem 2rem',
-          fontSize: '1.1rem',
-          fontWeight: '600',
-          background: '#1DB954',
-          color: 'white',
-          border: 'none',
-          borderRadius: '50px',
-          cursor: 'pointer',
-          boxShadow: '0 4px 15px rgba(29, 185, 84, 0.4)',
-          transition: 'all 0.3s ease',
-          zIndex: 1000,
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'scale(1.05)';
-          e.currentTarget.style.boxShadow = '0 6px 20px rgba(29, 185, 84, 0.6)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.boxShadow = '0 4px 15px rgba(29, 185, 84, 0.4)';
-        }}
-      >
-        🎉 View My 2024 Wrapped
-      </button>
+      <Hero onViewWrapped={() => setShowWrapped(true)} />
     </div>
   );
 }
