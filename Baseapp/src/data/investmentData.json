@@ -5,14 +5,20 @@
   "returnPercentage": 15.0,
   "topPerformingAsset": {
     "name": "Tech Growth Fund",
-    "return": 34.5
+    "return": 34.5,
+    "sector": "Technology"
   },
   "portfolioBreakdown": {
-    "stocks": 45,
-    "bonds": 25,
-    "crypto": 15,
-    "realEstate": 10,
-    "cash": 5
+    "funds": 100
+  },
+  "sectorAllocation": {
+    "Technology": 32,
+    "Healthcare": 18,
+    "Financials": 15,
+    "Consumer": 12,
+    "Energy": 8,
+    "RealEstate": 10,
+    "Other": 5
   },
   "monthlyStats": {
     "bestMonth": {
@@ -24,23 +30,23 @@
       "return": -3.1
     }
   },
-  "tradingActivity": {
-    "totalTrades": 87,
-    "successRate": 68,
-    "favoriteDay": "Tuesday"
-  },
-  "achievements": [
-    "Hit your annual savings goal 3 months early",
-    "Diversified across 5+ asset classes",
-    "Outperformed the S&P 500 by 4.2%",
-    "Stayed invested during market volatility"
-  ],
-  "lookingAhead": {
-    "projectedValue2025": 158500,
-    "recommendedActions": [
-      "Rebalance portfolio to reduce tech exposure",
-      "Consider increasing bond allocation",
-      "Review emergency fund coverage"
+  "fundPerformance": {
+    "topFunds": [
+      {
+        "name": "Tech Growth Fund",
+        "return": 34.5,
+        "sector": "Technology"
+      },
+      {
+        "name": "Healthcare Innovation Fund",
+        "return": 22.3,
+        "sector": "Healthcare"
+      },
+      {
+        "name": "Global Equity Fund",
+        "return": 18.7,
+        "sector": "Diversified"
+      }
     ]
   }
 }

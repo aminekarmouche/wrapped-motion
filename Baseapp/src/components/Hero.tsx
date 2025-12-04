@@ -1,44 +1,47 @@
 import React from 'react';
 import './Hero.css';
 import investmentData from '../data/investmentData.json';
+import { translations, getLanguageFromURL } from '../i18n';
 
 interface HeroProps {
   onViewWrapped: () => void;
 }
 
 const Hero: React.FC<HeroProps> = ({ onViewWrapped }) => {
+  const currentLanguage = getLanguageFromURL();
+  const t = translations[currentLanguage].hero;
   return (
     <div className="hero-container">
       <div className="hero-content">
-        <h1 className="hero-title">Your Investment Wrapped 2025</h1>
+        <h1 className="hero-title">{t.title}</h1>
         <p className="hero-subtitle">
-          A year of smart investing and growing wealth
+          {t.subtitle}
         </p>
         
         <div className="stats-grid">
           <div className="stat-card">
-            <div className="stat-value">${investmentData.totalInvested.toLocaleString()}</div>
-            <div className="stat-label">Total Invested</div>
+            <div className="stat-value">{investmentData.totalInvested.toLocaleString()} kr</div>
+            <div className="stat-label">{t.totalInvested}</div>
           </div>
           
           <div className="stat-card highlight">
             <div className="stat-value">+{investmentData.returnPercentage}%</div>
-            <div className="stat-label">Annual Returns</div>
+            <div className="stat-label">{t.annualReturns}</div>
           </div>
           
           <div className="stat-card">
-            <div className="stat-value">${investmentData.totalReturns.toLocaleString()}</div>
-            <div className="stat-label">Profit Earned</div>
+            <div className="stat-value">{investmentData.totalReturns.toLocaleString()} kr</div>
+            <div className="stat-label">{t.profitEarned}</div>
           </div>
         </div>
 
         <div className="hero-highlight">
-          <h2>🏆 Top Performer</h2>
+          <h2>{t.topPerformer}</h2>
           <p className="top-asset">{investmentData.topPerformingAsset.name}</p>
-          <p className="top-return">+{investmentData.topPerformingAsset.return}% Returns</p>
+          <p className="top-return">+{investmentData.topPerformingAsset.return}% {t.returns}</p>
         </div>
 
-        <button className="cta-button" onClick={onViewWrapped}>View Full Wrapped</button>
+        <button className="cta-button" onClick={onViewWrapped}>{t.viewFullWrapped}</button>
       </div>
     </div>
   );

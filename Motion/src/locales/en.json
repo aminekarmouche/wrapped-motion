@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "Your Investment Wrapped 2025",
+    "subtitle": "A year of smart investing and growing wealth",
+    "totalInvested": "Total Invested",
+    "annualReturns": "Annual Returns",
+    "profitEarned": "Profit Earned",
+    "topPerformer": "🏆 Top Performer",
+    "returns": "Returns",
+    "viewFullWrapped": "View Saga Wrapped"
+  },
+  "slides": {
+    "slide1": {
+      "title": "Your Top Holdings 2025",
+      "subtitle": "The investments that defined your year"
+    },
+    "slide2": {
+      "title": "Your Numbers",
+      "totalValue": "Total Value",
+      "totalInvested": "Total Invested",
+      "totalReturn": "Total Return",
+      "numberOfHoldings": "Number of Holdings"
+    },
+    "slide3": {
+      "title": "Your Year in Review",
+      "invested": "Invested",
+      "grown": "Grown to",
+      "returns": "Returns",
+      "message": "Keep investing and growing your future!"
+    },
+    "backToHome": "Back to Home"
+  }
+}

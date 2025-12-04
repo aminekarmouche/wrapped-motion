@@ -1,0 +1,33 @@
+{
+  "hero": {
+    "title": "Din Fondförsäkring 2025",
+    "subtitle": "Så här förvaltades din drömpension",
+    "totalInvested": "Totalt Investerat",
+    "annualReturns": "Årlig Avkastning",
+    "profitEarned": "Värdetillväxt",
+    "topPerformer": "🏆 Bästa Fonden",
+    "returns": "Avkastning",
+    "viewFullWrapped": "Se Din Fondförsäkringsrapport"
+  },
+  "slides": {
+    "slide1": {
+      "title": "Dina Toppinnehav 2025",
+      "subtitle": "De investeringar som definierade ditt år"
+    },
+    "slide2": {
+      "title": "Din Fondförsäkring i Siffror",
+      "totalValue": "Totalt Värde",
+      "totalInvested": "Totalt Investerat",
+      "totalReturn": "Total Avkastning",
+      "numberOfHoldings": "Antal Innehav"
+    },
+    "slide3": {
+      "title": "Din Fondförsäkring 2025",
+      "invested": "Investerat",
+      "grown": "Växte till",
+      "returns": "Avkastning",
+      "message": "Tillsammans bygger vi din framtid!"
+    },
+    "backToHome": "Tillbaka till Hem"
+  }
+}

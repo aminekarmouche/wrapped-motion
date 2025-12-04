@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { animate } from 'motion';
 import { Holding } from '../types';
+import { translations, getLanguageFromURL } from '../i18n';
 
 interface Slide1Props {
   holdings: Holding[];
@@ -32,6 +33,8 @@ const AnimatedNumber: React.FC<{ value: number; duration?: number }> = ({
 const Slide1: React.FC<Slide1Props> = ({ holdings }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
+  const currentLanguage = getLanguageFromURL();
+  const t = translations[currentLanguage].slides.slide1;
 
   const topHoldings = holdings
     .sort((a, b) => b.percentOfPortfolio - a.percentOfPortfolio)
@@ -61,7 +64,7 @@ const Slide1: React.FC<Slide1Props> = ({ holdings }) => {
         className="slide-title" 
         style={{ opacity: 0, transform: 'translateY(-50px)' }}
       >
-        Your Top Holdings
+        {t.title}
       </h1>
 
       <div ref={listRef} className="holdings-list">

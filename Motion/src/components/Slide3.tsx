@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { animate } from 'motion';
 import { Holding } from '../types';
+import { translations, getLanguageFromURL } from '../i18n';
 
 interface Slide3Props {
   holdings: Holding[];
@@ -33,6 +34,8 @@ const AnimatedNumber: React.FC<{
 const Slide3: React.FC<Slide3Props> = ({ holdings }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const currentLanguage = getLanguageFromURL();
+  const t = translations[currentLanguage].slides.slide3;
 
   const numberOfHoldings = holdings.length;
   const maxPercent = Math.max(...holdings.map(h => h.percentOfPortfolio));
@@ -64,14 +67,14 @@ const Slide3: React.FC<Slide3Props> = ({ holdings }) => {
         className="slide-title" 
         style={{ opacity: 0, transform: 'rotateX(-90deg)' }}
       >
-        Your Year at a Glance
+        {t.title}
       </h1>
 
       <div ref={contentRef} className="summary-content" style={{ opacity: 0 }}>
         <p className="summary-text">
-          You've built a portfolio across <strong>{numberOfHoldings} different holdings</strong>, 
-          showing commitment to your financial future. Your diversification strategy 
-          demonstrates thoughtful investing.
+          Du har byggt en portfölj med <strong>{numberOfHoldings} olika innehav</strong>, 
+          vilket visar ditt engagemang för din ekonomiska framtid. Din diversifieringsstrategi 
+          demonstrerar genomtänkta investeringar.
         </p>
 
         <div 
@@ -81,11 +84,11 @@ const Slide3: React.FC<Slide3Props> = ({ holdings }) => {
           <AnimatedNumber value={diversificationScore} suffix="%" />
         </div>
         <p className="stat-label" style={{ fontSize: '1.5rem', marginTop: '1rem' }}>
-          Diversification Score
+          Diversifieringspoäng
         </p>
 
         <p className="summary-text" style={{ marginTop: '3rem' }}>
-          Keep up the great work in 2026! 🚀
+          {t.message}
         </p>
       </div>
     </div>

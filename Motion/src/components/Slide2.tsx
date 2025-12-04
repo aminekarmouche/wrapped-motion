@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { animate } from 'motion';
 import { Holding } from '../types';
+import { translations, getLanguageFromURL } from '../i18n';
 
 interface Slide2Props {
   holdings: Holding[];
@@ -44,15 +45,17 @@ const AnimatedNumber: React.FC<{
 const Slide2: React.FC<Slide2Props> = ({ holdings }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const currentLanguage = getLanguageFromURL();
+  const t = translations[currentLanguage].slides.slide2;
 
   const totalInvested = holdings.reduce((sum, h) => sum + h.amountInvestedSek, 0);
   const numberOfHoldings = holdings.length;
   const averagePosition = totalInvested / numberOfHoldings;
 
   const stats = [
-    { value: totalInvested, label: 'Total Invested', prefix: '', suffix: ' SEK', decimals: 0 },
-    { value: numberOfHoldings, label: 'Holdings', prefix: '', suffix: '', decimals: 0 },
-    { value: averagePosition, label: 'Avg Position', prefix: '', suffix: ' SEK', decimals: 0 },
+    { value: totalInvested, label: t.totalInvested, prefix: '', suffix: ' kr', decimals: 0 },
+    { value: numberOfHoldings, label: t.numberOfHoldings, prefix: '', suffix: '', decimals: 0 },
+    { value: averagePosition, label: 'Genomsnittlig Position', prefix: '', suffix: ' kr', decimals: 0 },
   ];
 
   useEffect(() => {
@@ -79,7 +82,7 @@ const Slide2: React.FC<Slide2Props> = ({ holdings }) => {
         className="slide-title" 
         style={{ opacity: 0, transform: 'scale(0.8)' }}
       >
-        Your Portfolio in Numbers
+        {t.title}
       </h1>
 
       <div ref={gridRef} className="stats-grid">

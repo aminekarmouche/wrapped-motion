@@ -6,12 +6,15 @@ import { WrappedProps } from '../types';
 import Slide1 from './Slide1';
 import Slide2 from './Slide2';
 import Slide3 from './Slide3';
+import { translations, getLanguageFromURL } from '../i18n';
 import '../styles/theme.less';
 
 const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const totalSlides = 3;
+  const currentLanguage = getLanguageFromURL();
+  const t = translations[currentLanguage].slides;
 
   // Apply theme colors
   useEffect(() => {
@@ -125,7 +128,7 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
           onClick={prevSlide}
           disabled={currentSlide === 0}
         >
-          ← Previous
+          ← Föregående
         </button>
         
         {currentSlide === totalSlides - 1 ? (
@@ -133,7 +136,7 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
             className="nav-button nav-button-primary"
             onClick={onExit}
           >
-            ← Back to Home
+            {t.backToHome}
           </button>
         ) : (
           <button
@@ -141,7 +144,7 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
             onClick={nextSlide}
             disabled={currentSlide === totalSlides - 1}
           >
-            Next →
+            Nästa →
           </button>
         )}
       </div>
