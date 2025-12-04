@@ -28,6 +28,11 @@
       "returns": "Returns",
       "message": "Keep investing and growing your future!"
     },
+    "slide4": {
+      "title": "Your Future Awaits",
+      "message": "Every investment you make today is a step closer to your dreams.",
+      "subtitle": "Continue your journey to financial freedom with SPP."
+    },
     "backToHome": "Back to Home"
   }
 }

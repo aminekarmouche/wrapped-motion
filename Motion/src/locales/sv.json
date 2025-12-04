@@ -28,6 +28,11 @@
       "returns": "Avkastning",
       "message": "Tillsammans bygger vi din framtid!"
     },
+    "slide4": {
+      "title": "Din Framtid Väntar",
+      "message": "Varje investering du gör idag är ett steg närmare dina drömmar.",
+      "subtitle": "Fortsätt din resa mot ekonomisk frihet med SPP."
+    },
     "backToHome": "Tillbaka till Hem"
   }
 }

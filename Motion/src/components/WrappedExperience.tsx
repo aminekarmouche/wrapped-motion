@@ -6,13 +6,14 @@ import { WrappedProps } from '../types';
 import Slide1 from './Slide1';
 import Slide2 from './Slide2';
 import Slide3 from './Slide3';
+import Slide4 from './Slide4';
 import { translations, getLanguageFromURL } from '../i18n';
 import '../styles/theme.less';
 
 const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const totalSlides = 3;
+  const totalSlides = 4;
   const currentLanguage = getLanguageFromURL();
   const t = translations[currentLanguage].slides;
 
@@ -101,6 +102,7 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
     <Slide1 holdings={holdings} key="slide1" />,
     <Slide2 holdings={holdings} key="slide2" />,
     <Slide3 holdings={holdings} key="slide3" />,
+    <Slide4 key="slide4" />,
   ];
 
   return (
