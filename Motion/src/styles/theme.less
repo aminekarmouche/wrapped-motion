@@ -1,0 +1,212 @@
+// Motion/src/styles/theme.less
+// Customizable theme variables for Wrapped Experience
+// Colors are set dynamically via CSS variables
+
+:root {
+  --wrapped-primary: #1DB954;
+  --wrapped-secondary: #191414;
+  --wrapped-background: #121212;
+  --wrapped-accent: #FF5F6D;
+  --wrapped-text: #FFFFFF;
+  --wrapped-text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+.wrapped-container {
+  background-color: var(--wrapped-background);
+  color: var(--wrapped-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.slide-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, var(--wrapped-primary), var(--wrapped-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.holdings-list {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.holding-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  &:hover {
+    border-color: var(--wrapped-primary);
+    transform: scale(1.02);
+  }
+}
+
+.holding-info {
+  text-align: left;
+  
+  h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--wrapped-text);
+  }
+  
+  .ticker {
+    font-size: 1rem;
+    color: var(--wrapped-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.holding-percentage {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--wrapped-primary);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  margin-top: 2rem;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  .stat-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--wrapped-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .stat-label {
+    font-size: 1.2rem;
+    color: var(--wrapped-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}
+
+.summary-content {
+  max-width: 800px;
+  
+  .summary-text {
+    font-size: 1.5rem;
+    line-height: 2;
+    color: var(--wrapped-text-secondary);
+    margin-bottom: 3rem;
+  }
+  
+  .highlight-stat {
+    font-size: 5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--wrapped-primary), var(--wrapped-accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 2rem 0;
+  }
+}
+
+.navigation {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 10;
+}
+
+.nav-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--wrapped-text);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--wrapped-primary);
+    border-color: var(--wrapped-primary);
+    transform: scale(1.05);
+  }
+  
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1);
+    }
+  }
+}
+
+.slide-indicators {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 10;
+}
+
+.indicator {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  
+  &.active {
+    background: var(--wrapped-primary);
+    width: 60px;
+  }
+}

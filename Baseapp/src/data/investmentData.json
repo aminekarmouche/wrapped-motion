@@ -1,0 +1,46 @@
+{
+  "year": 2024,
+  "totalInvested": 125000,
+  "totalReturns": 18750,
+  "returnPercentage": 15.0,
+  "topPerformingAsset": {
+    "name": "Tech Growth Fund",
+    "return": 34.5
+  },
+  "portfolioBreakdown": {
+    "stocks": 45,
+    "bonds": 25,
+    "crypto": 15,
+    "realEstate": 10,
+    "cash": 5
+  },
+  "monthlyStats": {
+    "bestMonth": {
+      "month": "November",
+      "return": 8.2
+    },
+    "worstMonth": {
+      "month": "March",
+      "return": -3.1
+    }
+  },
+  "tradingActivity": {
+    "totalTrades": 87,
+    "successRate": 68,
+    "favoriteDay": "Tuesday"
+  },
+  "achievements": [
+    "Hit your annual savings goal 3 months early",
+    "Diversified across 5+ asset classes",
+    "Outperformed the S&P 500 by 4.2%",
+    "Stayed invested during market volatility"
+  ],
+  "lookingAhead": {
+    "projectedValue2025": 158500,
+    "recommendedActions": [
+      "Rebalance portfolio to reduce tech exposure",
+      "Consider increasing bond allocation",
+      "Review emergency fund coverage"
+    ]
+  }
+}

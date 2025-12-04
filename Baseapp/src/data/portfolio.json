@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Tesla Inc",
+    "ticker": "TSLA",
+    "amountInvestedSek": 45000,
+    "percentOfPortfolio": 28
+  },
+  {
+    "name": "Apple Inc",
+    "ticker": "AAPL",
+    "amountInvestedSek": 38000,
+    "percentOfPortfolio": 24
+  },
+  {
+    "name": "Microsoft Corporation",
+    "ticker": "MSFT",
+    "amountInvestedSek": 32000,
+    "percentOfPortfolio": 20
+  },
+  {
+    "name": "NVIDIA Corporation",
+    "ticker": "NVDA",
+    "amountInvestedSek": 22000,
+    "percentOfPortfolio": 14
+  },
+  {
+    "name": "Spotify Technology",
+    "ticker": "SPOT",
+    "amountInvestedSek": 15000,
+    "percentOfPortfolio": 9
+  },
+  {
+    "name": "Volvo Group",
+    "ticker": "VOLV-B",
+    "amountInvestedSek": 8000,
+    "percentOfPortfolio": 5
+  }
+]
