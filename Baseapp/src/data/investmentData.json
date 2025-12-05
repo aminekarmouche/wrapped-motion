@@ -30,6 +30,20 @@
       "return": -3.1
     }
   },
+  "monthlyPerformance": [
+    { "month": "Jan", "value": 125000, "return": 2.1 },
+    { "month": "Feb", "value": 127625, "return": 2.1 },
+    { "month": "Mar", "value": 123668, "return": -3.1 },
+    { "month": "Apr", "value": 126909, "return": 2.6 },
+    { "month": "Maj", "value": 130175, "return": 2.6 },
+    { "month": "Jun", "value": 132479, "return": 1.8 },
+    { "month": "Jul", "value": 133809, "return": 1.0 },
+    { "month": "Aug", "value": 136149, "return": 1.7 },
+    { "month": "Sep", "value": 137829, "return": 1.2 },
+    { "month": "Okt", "value": 140212, "return": 1.7 },
+    { "month": "Nov", "value": 151709, "return": 8.2 },
+    { "month": "Dec", "value": 143750, "return": -5.2 }
+  ],
   "fundPerformance": {
     "topFunds": [
       {

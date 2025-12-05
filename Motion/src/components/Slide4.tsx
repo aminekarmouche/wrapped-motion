@@ -91,6 +91,10 @@ const Slide4: React.FC = () => {
             src="/src/data/generate-image.png"
             alt="Your future journey"
             className="future-image"
+            onError={(e) => {
+              console.error('Image failed to load');
+              (e.target as HTMLImageElement).style.display = 'none';
+            }}
           />
         </div>
       )}

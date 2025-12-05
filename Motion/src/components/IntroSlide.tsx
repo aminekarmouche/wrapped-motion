@@ -25,15 +25,15 @@ const IntroSlide: React.FC<IntroSlideProps> = ({ onComplete }) => {
         await animate(
           text1Ref.current,
           { opacity: [0, 1], scale: [0.8, 1] },
-          { duration: 0.8, delay: 0.3 }
+          { duration: 0.3, delay: 0.1 }
         ).finished;
         
-        await new Promise(resolve => setTimeout(resolve, 800));
+        await new Promise(resolve => setTimeout(resolve, 150));
         
         await animate(
           text1Ref.current,
           { opacity: 0, y: -30 },
-          { duration: 0.5 }
+          { duration: 0.2 }
         ).finished;
       }
 
@@ -42,15 +42,15 @@ const IntroSlide: React.FC<IntroSlideProps> = ({ onComplete }) => {
         await animate(
           text2Ref.current,
           { opacity: [0, 1], scale: [0.8, 1] },
-          { duration: 0.8 }
+          { duration: 0.3 }
         ).finished;
         
-        await new Promise(resolve => setTimeout(resolve, 800));
+        await new Promise(resolve => setTimeout(resolve, 150));
         
         await animate(
           text2Ref.current,
           { opacity: 0, y: -30 },
-          { duration: 0.5 }
+          { duration: 0.2 }
         ).finished;
       }
 
@@ -59,10 +59,10 @@ const IntroSlide: React.FC<IntroSlideProps> = ({ onComplete }) => {
         await animate(
           text3aRef.current,
           { opacity: [0, 1], scale: [0.5, 1.2, 1] },
-          { duration: 0.8 }
+          { duration: 0.25 }
         ).finished;
         
-        await new Promise(resolve => setTimeout(resolve, 600));
+        await new Promise(resolve => setTimeout(resolve, 100));
       }
 
       // Third text - part b
@@ -70,10 +70,10 @@ const IntroSlide: React.FC<IntroSlideProps> = ({ onComplete }) => {
         await animate(
           text3bRef.current,
           { opacity: [0, 1], scale: [0.5, 1.2, 1] },
-          { duration: 0.8 }
+          { duration: 0.25 }
         ).finished;
         
-        await new Promise(resolve => setTimeout(resolve, 600));
+        await new Promise(resolve => setTimeout(resolve, 100));
       }
 
       // Third text - part c
@@ -81,17 +81,17 @@ const IntroSlide: React.FC<IntroSlideProps> = ({ onComplete }) => {
         await animate(
           text3cRef.current,
           { opacity: [0, 1], scale: [0.5, 1.2, 1] },
-          { duration: 0.8 }
+          { duration: 0.25 }
         ).finished;
         
-        await new Promise(resolve => setTimeout(resolve, 800));
+        await new Promise(resolve => setTimeout(resolve, 150));
         
         // Fade out entire container
         if (containerRef.current) {
           await animate(
             containerRef.current,
             { opacity: 0 },
-            { duration: 0.6 }
+            { duration: 0.25 }
           ).finished;
         }
       }

@@ -8,6 +8,7 @@ import Slide1 from './Slide1';
 import Slide2 from './Slide2';
 import Slide3 from './Slide3';
 import Slide4 from './Slide4';
+import Slide5 from './Slide5';
 import { translations, getLanguageFromURL } from '../i18n';
 import '../styles/theme.less';
 
@@ -15,7 +16,7 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
   const [showIntro, setShowIntro] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const totalSlides = 4;
+  const totalSlides = 5;
   const currentLanguage = getLanguageFromURL();
   const t = translations[currentLanguage].slides;
 
@@ -101,10 +102,11 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
   }, [currentSlide]);
 
   const slides = [
-    <Slide1 holdings={holdings} key="slide1" />,
-    <Slide2 holdings={holdings} key="slide2" />,
-    <Slide3 holdings={holdings} key="slide3" />,
-    <Slide4 key="slide4" />,
+    <Slide1 holdings={holdings} key={`slide1-${currentSlide}`} />,
+    <Slide2 holdings={holdings} key={`slide2-${currentSlide}`} />,
+    <Slide3 holdings={holdings} key={`slide3-${currentSlide}`} />,
+    <Slide4 key={`slide4-${currentSlide}`} />,
+    <Slide5 holdings={holdings} key={`slide5-${currentSlide}`} />,
   ];
 
   if (showIntro) {
@@ -129,7 +131,11 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
       </div>
 
       {/* Current Slide */}
-      <div className="slide-wrapper" style={{ opacity: 0, transform: 'translateX(20px)' }}>
+      <div 
+        key={currentSlide}
+        className="slide-wrapper" 
+        style={{ opacity: 0, transform: 'translateX(20px)' }}
+      >
         {slides[currentSlide]}
       </div>
 

@@ -1,6 +1,6 @@
 // Motion/src/components/Slide1.tsx
-// Slide 1: Your Top Holdings - Using motion.dev
-import React, { useEffect, useState, useRef } from 'react';
+// Slide 1: Top Holdings - Using motion.dev
+import React, { useEffect, useRef } from 'react';
 import { animate } from 'motion';
 import { Holding } from '../types';
 import { translations, getLanguageFromURL } from '../i18n';
@@ -9,53 +9,36 @@ interface Slide1Props {
   holdings: Holding[];
 }
 
-const AnimatedNumber: React.FC<{ value: number; duration?: number }> = ({ 
-  value, 
-  duration = 2 
-}) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    const controls = animate(
-      0,
-      value,
-      {
-        duration,
-        onUpdate: (latest) => setCount(Math.floor(latest)),
-      }
-    );
-    return () => controls.stop();
-  }, [value, duration]);
-
-  return <span>{count}%</span>;
-};
-
 const Slide1: React.FC<Slide1Props> = ({ holdings }) => {
   const titleRef = useRef<HTMLHeadingElement>(null);
-  const listRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
   const currentLanguage = getLanguageFromURL();
   const t = translations[currentLanguage].slides.slide1;
 
   const topHoldings = holdings
     .sort((a, b) => b.percentOfPortfolio - a.percentOfPortfolio)
-    .slice(0, 3);
+    .slice(0, 5);
 
   useEffect(() => {
+    console.log('Slide1 mounted, holdings count:', holdings.length);
+    console.log('Top holdings:', topHoldings);
+    
     if (titleRef.current) {
       animate(titleRef.current, { opacity: 1, y: 0 }, { duration: 0.8 });
     }
 
     if (listRef.current) {
-      const cards = listRef.current.querySelectorAll('.holding-card');
-      cards.forEach((card, i) => {
+      const items = listRef.current.querySelectorAll('.holding-item');
+      console.log('Found holding items:', items.length);
+      items.forEach((item, i) => {
         animate(
-          card as HTMLElement, 
-          { opacity: 1, x: 0 }, 
-          { duration: 0.6, delay: i * 0.2 }
+          item as HTMLElement,
+          { opacity: 1, x: 0 },
+          { duration: 0.6, delay: 0.3 + i * 0.1 }
         );
       });
     }
-  }, []);
+  }, [holdings.length]); // Re-run when holdings change
 
   return (
     <div className="slide">
@@ -67,23 +50,30 @@ const Slide1: React.FC<Slide1Props> = ({ holdings }) => {
         {t.title}
       </h1>
 
-      <div ref={listRef} className="holdings-list">
-        {topHoldings.map((holding) => (
-          <div
-            key={holding.ticker}
-            className="holding-card"
-            style={{ opacity: 0, transform: 'translateX(-100px)' }}
+      <p className="slide-subtitle" style={{ marginBottom: '2rem' }}>
+        {t.subtitle}
+      </p>
+
+      <ul ref={listRef} className="holdings-list">
+        {topHoldings.map((holding, index) => (
+          <li
+            key={holding.name}
+            className="holding-item"
+            style={{ opacity: 0, transform: 'translateX(-50px)' }}
           >
+            <div className="holding-rank">#{index + 1}</div>
             <div className="holding-info">
-              <h3>{holding.name}</h3>
-              <div className="ticker">{holding.ticker}</div>
+              <div className="holding-name">{holding.name}</div>
+              <div className="holding-details">
+                <span className="holding-percent">{holding.percentOfPortfolio.toFixed(1)}%</span>
+                <span className="holding-amount">
+                  {holding.amountInvestedSek.toLocaleString('sv-SE')} kr
+                </span>
+              </div>
             </div>
-            <div className="holding-percentage">
-              <AnimatedNumber value={holding.percentOfPortfolio} />
-            </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

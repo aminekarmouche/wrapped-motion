@@ -81,6 +81,62 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem auto;
+}
+
+.holding-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--wrapped-primary);
+    transform: translateX(8px);
+  }
+}
+
+.holding-rank {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--wrapped-primary);
+  min-width: 60px;
+  text-align: center;
+}
+
+.holding-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.holding-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--wrapped-text);
+}
+
+.holding-details {
+  display: flex;
+  gap: 2rem;
+  font-size: 1rem;
+}
+
+.holding-percent {
+  color: var(--wrapped-primary);
+  font-weight: 700;
+}
+
+.holding-amount {
+  color: var(--wrapped-text-secondary);
 }
 
 .holding-card {
@@ -351,6 +407,36 @@
   
   @media (max-width: 768px) {
     font-size: 1rem;
+  }
+}
+
+// Simple chart styles
+.simple-chart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+}
+
+@keyframes fadeInPoint {
+  to { opacity: 1; }
+}
+
+.chart-point {
+  cursor: pointer;
+  transition: r 0.2s ease;
+  
+  &:hover {
+    r: 7;
   }
 }
 
