@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { animate } from 'motion';
 import { WrappedProps } from '../types';
+import IntroSlide from './IntroSlide';
 import Slide1 from './Slide1';
 import Slide2 from './Slide2';
 import Slide3 from './Slide3';
@@ -11,6 +12,7 @@ import { translations, getLanguageFromURL } from '../i18n';
 import '../styles/theme.less';
 
 const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) => {
+  const [showIntro, setShowIntro] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const totalSlides = 4;
@@ -104,6 +106,14 @@ const WrappedExperience: React.FC<WrappedProps> = ({ holdings, theme, onExit }) 
     <Slide3 holdings={holdings} key="slide3" />,
     <Slide4 key="slide4" />,
   ];
+
+  if (showIntro) {
+    return (
+      <div ref={containerRef} className="wrapped-container">
+        <IntroSlide onComplete={() => setShowIntro(false)} />
+      </div>
+    );
+  }
 
   return (
     <div ref={containerRef} className="wrapped-container">
